@@ -1,10 +1,9 @@
 import type { Item } from "~/types";
-import { customAlphabet } from "nanoid";
-
-const nanoid = customAlphabet(
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-  10
-);
+function guidGenerator() {
+  return Math.random()
+    .toString(36)
+    .replace("0.", "image_" || "");
+}
 
 export const items = [
   {
@@ -140,6 +139,6 @@ export const items = [
 export const ItemsWithId = items.map((item) => {
   return {
     ...item,
-    id: nanoid(),
+    id: guidGenerator(),
   };
 });
