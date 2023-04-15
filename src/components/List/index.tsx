@@ -1,5 +1,5 @@
 import { ListItem } from "~/components/ListItem";
-import type { Item } from "~/types";
+import type { ItemWithID } from "~/types";
 import { createSignal, Component, For, createEffect } from "solid-js";
 import {
   BsSortAlphaDown,
@@ -31,7 +31,7 @@ const SORT_DIRECTION = {
 type SortDirection = typeof SORT_DIRECTION[keyof typeof SORT_DIRECTION];
 
 type ListProps = {
-  items: Item[];
+  items: ItemWithID[];
 };
 
 export const List: Component<ListProps> = ({ items }) => {
@@ -75,7 +75,6 @@ export const List: Component<ListProps> = ({ items }) => {
 
   const handleToggleSorting = (style: SortStyles) => () => {
     setSortDirection((old) => {
-      console.log(old, SORT_DIRECTION.Ascendend);
       if (sortStyle() !== style) {
         return SORT_DIRECTION.Ascendend;
       }
@@ -90,7 +89,7 @@ export const List: Component<ListProps> = ({ items }) => {
 
   return (
     <div class="flex flex-col gap-4 w-full max-w-screen-sm">
-      <div class="sticky top-0 p-4 flex justify-between items-center flex-col gap-4 sm:flex-row bg-slate-200 dark:bg-slate-950">
+      <div class="sticky top-0 p-4 flex justify-between items-center flex-col gap-4 sm:flex-row bg-slate-200 dark:bg-slate-950 z-10">
         <label class="flex gap-4">
           Search:
           <input
