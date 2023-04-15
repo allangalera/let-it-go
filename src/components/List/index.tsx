@@ -9,6 +9,7 @@ import {
 } from "solid-icons/bs";
 import { sort, createNewSortInstance } from "fast-sort";
 import { isNotNil } from "ramda";
+import { matchSorter } from "match-sorter";
 
 const naturalSort = createNewSortInstance({
   comparer: new Intl.Collator(undefined, { numeric: true, sensitivity: "base" })
@@ -34,6 +35,7 @@ type ListProps = {
 };
 
 export const List: Component<ListProps> = ({ items }) => {
+  const [searchInputValue, setSearchInputValue] = createSignal("");
   const [sortStyle, setSortStyle] = createSignal<SortStyles>(
     SORT_STYLES.ByName
   );
@@ -45,24 +47,31 @@ export const List: Component<ListProps> = ({ items }) => {
   );
 
   createEffect(() => {
+    const searchedItems = matchSorter(items, searchInputValue(), {
+      keys: ["name", "price"],
+    });
     if (sortStyle() === SORT_STYLES.ByName) {
       if (sortDirection() === SORT_DIRECTION.Descendent) {
-        setSortedItems(naturalSort(items).desc((i) => i.name));
+        setSortedItems(naturalSort(searchedItems).desc((i) => i.name));
       } else {
-        setSortedItems(naturalSort(items).asc((i) => i.name));
+        setSortedItems(naturalSort(searchedItems).asc((i) => i.name));
       }
     } else {
       if (sortDirection() === SORT_DIRECTION.Descendent) {
         setSortedItems(
-          sort(items).desc((i) => (isNotNil(i.price) ? i.price : undefined))
+          sort(searchedItems).desc((i) =>
+            isNotNil(i.price) ? i.price : undefined
+          )
         );
       } else {
         setSortedItems(
-          sort(items).asc((i) => (isNotNil(i.price) ? i.price : undefined))
+          sort(searchedItems).asc((i) =>
+            isNotNil(i.price) ? i.price : undefined
+          )
         );
       }
     }
-  }, [sortStyle, sortDirection, items]);
+  });
 
   const handleToggleSorting = (style: SortStyles) => () => {
     setSortDirection((old) => {
@@ -81,38 +90,48 @@ export const List: Component<ListProps> = ({ items }) => {
 
   return (
     <div class="flex flex-col gap-4 w-full max-w-screen-sm">
-      <div class="flex gap-2 items-center">
-        <h2>Ordenar por:</h2>
-        <button
-          class="flex gap-1 items-center justify-center rounded bg-slate-300 dark:bg-slate-900 p-2 border-slate-400 dark:border-slate-800 hover:border-slate-500 dark:hover:border-slate-700 border border-solid"
-          onClick={handleToggleSorting(SORT_STYLES.ByName)}
-        >
-          <div>Nome</div>
-          <div class="flex items-center justify-center w-4 text-lg">
-            {sortStyle() === SORT_STYLES.ByName ? (
-              sortDirection() === SORT_DIRECTION.Ascendend ? (
-                <BsSortAlphaDown />
-              ) : (
-                <BsSortAlphaDownAlt />
-              )
-            ) : null}
-          </div>
-        </button>
-        <button
-          class="flex gap-1 items-center justify-center rounded bg-slate-300 dark:bg-slate-900 p-2 border-slate-400 dark:border-slate-800 hover:border-slate-500 dark:hover:border-slate-700 border border-solid"
-          onClick={handleToggleSorting(SORT_STYLES.ByPrice)}
-        >
-          <div>Preço</div>
-          <div class="flex items-center justify-center w-4 text-lg">
-            {sortStyle() === SORT_STYLES.ByPrice ? (
-              sortDirection() === SORT_DIRECTION.Ascendend ? (
-                <BsSortNumericDown />
-              ) : (
-                <BsSortNumericDownAlt />
-              )
-            ) : null}
-          </div>
-        </button>
+      <div class="sticky top-0 p-4 flex justify-between items-center flex-col gap-4 sm:flex-row bg-slate-200 dark:bg-slate-950">
+        <label class="flex gap-4">
+          Search:
+          <input
+            class="bg-transparent border border-slate-400 dark:border-slate-800 rounded p-1 outline-none"
+            value={searchInputValue()}
+            onInput={(e) => setSearchInputValue(e.target.value)}
+          />
+        </label>
+        <div class="flex gap-2 items-center">
+          <h2>Ordenar por:</h2>
+          <button
+            class="flex gap-1 items-center justify-center rounded bg-slate-300 dark:bg-slate-900 p-2 border-slate-400 dark:border-slate-800 hover:border-slate-500 dark:hover:border-slate-700 border border-solid"
+            onClick={handleToggleSorting(SORT_STYLES.ByName)}
+          >
+            Nome
+            <div class="flex items-center justify-center w-4 text-lg">
+              {sortStyle() === SORT_STYLES.ByName ? (
+                sortDirection() === SORT_DIRECTION.Ascendend ? (
+                  <BsSortAlphaDown />
+                ) : (
+                  <BsSortAlphaDownAlt />
+                )
+              ) : null}
+            </div>
+          </button>
+          <button
+            class="flex gap-1 items-center justify-center rounded bg-slate-300 dark:bg-slate-900 p-2 border-slate-400 dark:border-slate-800 hover:border-slate-500 dark:hover:border-slate-700 border border-solid"
+            onClick={handleToggleSorting(SORT_STYLES.ByPrice)}
+          >
+            Preço
+            <div class="flex items-center justify-center w-4 text-lg">
+              {sortStyle() === SORT_STYLES.ByPrice ? (
+                sortDirection() === SORT_DIRECTION.Ascendend ? (
+                  <BsSortNumericDown />
+                ) : (
+                  <BsSortNumericDownAlt />
+                )
+              ) : null}
+            </div>
+          </button>
+        </div>
       </div>
       <div class="flex flex-col gap-4">
         <For each={sortedItems()}>{(item, i) => <ListItem {...item} />}</For>

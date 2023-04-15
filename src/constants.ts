@@ -21,15 +21,11 @@ export const items = [
   },
   {
     name: "Escrivaninha preta L",
-    url: null,
     images: [],
-    price: null,
   },
   {
     name: "Escravinha branca regular",
-    url: null,
     images: [],
-    price: null,
   },
   {
     name: "Panela de pressão elétrica Electrolux",
@@ -45,19 +41,16 @@ export const items = [
   },
   {
     name: "Fogão Electrolux preto",
-    url: null,
     images: [],
     price: 1000,
   },
   {
     name: "Microondas Electrolux prata",
-    url: null,
     images: [],
     price: 500,
   },
   {
     name: "Aspirador de pó 110v",
-    url: null,
     images: [],
     price: 200,
   },
@@ -93,13 +86,11 @@ export const items = [
   },
   {
     name: "Cadeira escritório Mercado Livre",
-    url: null,
     images: [],
     price: 400,
   },
   {
     name: "Cama box casal (inclui colchão)",
-    url: null,
     images: [],
     price: 0,
   },
@@ -111,74 +102,57 @@ export const items = [
   },
   {
     name: "Secador de cabelo (rosa)",
-    url: null,
     images: [],
-    price: null,
   },
   {
     name: "Secador de cabelo (preto)",
     url: "https://www.amazon.com.br/dp/B097HYQPJ1",
     images: [],
-    price: null,
   },
   {
     name: "Grill Oister (sanduicheira)",
     url: "https://www.oster.com.br/grill-eletrico-multiuso-oster-inox/p",
     images: [],
-    price: null,
   },
   {
     name: "Liquidificador Mondial Vermelho",
-    url: null,
     images: [],
-    price: null,
   },
   {
     name: "Cafeteira (automática)",
-    url: null,
     images: [],
-    price: null,
   },
   {
     name: "Prensa francesa",
-    url: null,
     images: [],
-    price: null,
   },
   {
     name: "Filtro de água Electrolux preto",
     url: "https://www.amazon.com.br/gp/product/B08X66RQ48",
     images: [],
-    price: null,
   },
   {
     name: "Monitor Dell 21 polegadas",
-    url: null,
     images: [],
-    price: null,
   },
   {
     name: "Mesa de cabeçeira",
     url: "https://www.madeiramadeira.com.br/mesa-de-cabeceira-compacta-retro-decore-mesinha-canto-quarto-gaveta-nicho-preto-rpm-moveis-2581082.html?id=2581082",
     images: [],
-    price: null,
   },
   {
     name: "escorredor",
     url: "https://produto.mercadolivre.com.br/MLB-1570696571-escorredor-louca-30-pratos-chef-triplo-com-bandeja-p-agua-_JM?quantity=1&variation_id=58675943642",
     images: [],
-    price: null,
   },
   {
     name: "rack sala",
     url: "https://www.mobly.com.br/rack-retro-goslar-fosco-preto-162-cm-417154.html#a=3|p=1|pn=1|t=Busca|s=0",
     images: [],
-    price: null,
   },
   {
     name: "moedor café",
     url: "https://www.amazon.com.br/gp/product/B076HZQQ9X",
     images: [],
-    price: null,
   },
 ] satisfies Item[];
