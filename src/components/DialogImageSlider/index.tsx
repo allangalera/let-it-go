@@ -45,9 +45,9 @@ export const DialogImageSlider: Component<DialogImageSliderProps> = ({
   return (
     <Dialog.Root isOpen={isOpen()} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay class="fixed w-[100vw] h-[100svh] top-0 left-0 bg-slate-950/20 z-20 p-4" />
-        <div class="text-black dark:text-white fixed w-[100vw] h-[100svh] top-0 left-0 flex justify-center items-center z-20 p-4">
-          <Dialog.Content class="relative bg-slate-300 dark:bg-slate-900 p-4 border-slate-400 dark:border-slate-800 h-full w-full flex flex-col">
+        <Dialog.Overlay class="fixed w-[100vw] h-[100svh] top-0 left-0 bg-slate-950/20 z-20" />
+        <div class="text-black dark:text-white fixed w-[100vw] h-[100svh] top-0 left-0 flex justify-center items-center z-20 p-1">
+          <Dialog.Content class="relative bg-slate-300 dark:bg-slate-900 p-2 border-slate-400 dark:border-slate-800 h-full w-full flex flex-col">
             <div class="flex justify-end">
               <Dialog.CloseButton>
                 <RiSystemCloseLine class="text-4xl" />
