@@ -41,28 +41,6 @@ export const ImageSlider: Component<ImageSliderProps> = ({
         images={images}
       />
       <div class="rounded dark:bg-slate-800 w-full aspect-square relative">
-        {isFirst() ? null : (
-          <Button.Root
-            class="absolute z-10 top-[50%] translate-y-[-50%] translate-x-1 left-0 p-1 bg-slate-900 rounded opacity-50"
-            onClick={prev}
-          >
-            <RiSystemArrowLeftSFill class="text-4xl" />
-          </Button.Root>
-        )}
-        {isLast() ? null : (
-          <Button.Root
-            class="absolute z-10 top-[50%] translate-y-[-50%] translate-x-[-4px] right-0 p-1 bg-slate-900 rounded opacity-50"
-            onClick={next}
-          >
-            <RiSystemArrowRightSFill class="text-4xl" />
-          </Button.Root>
-        )}
-        <Button.Root
-          class="absolute z-10 bottom-0 right-0 p-1"
-          onClick={() => setIsDialogOpen(true)}
-        >
-          <RiMediaFullscreenLine class="text-4xl" />
-        </Button.Root>
         <div
           use:slider
           class="flex relative aspect-square overflow-hidden items-center rounded w-full h-full"
@@ -90,6 +68,28 @@ export const ImageSlider: Component<ImageSliderProps> = ({
             )}
           </For>
         </div>
+        {isFirst() ? null : (
+          <Button.Root
+            class="absolute top-[50%] translate-y-[-50%] translate-x-1 left-0 p-1 bg-slate-900 rounded opacity-50"
+            onClick={prev}
+          >
+            <RiSystemArrowLeftSFill class="text-4xl" />
+          </Button.Root>
+        )}
+        {isLast() ? null : (
+          <Button.Root
+            class="absolute top-[50%] translate-y-[-50%] translate-x-[-4px] right-0 p-1 bg-slate-900 rounded opacity-50"
+            onClick={next}
+          >
+            <RiSystemArrowRightSFill class="text-4xl" />
+          </Button.Root>
+        )}
+        <Button.Root
+          class="absolute bottom-0 right-0 p-1"
+          onClick={() => setIsDialogOpen(true)}
+        >
+          <RiMediaFullscreenLine class="text-4xl" />
+        </Button.Root>
       </div>
     </>
   );
