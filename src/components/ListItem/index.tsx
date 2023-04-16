@@ -3,6 +3,7 @@ import type { ItemWithID } from "~/types";
 import { RiSystemExternalLinkLine } from "solid-icons/ri";
 import { isEmpty, isNotNil } from "ramda";
 import { ImageSlider } from "~/components/ImageSlider";
+import { showDate } from "~/utils";
 
 export const ListItem: Component<ItemWithID> = ({
   id,
@@ -11,6 +12,7 @@ export const ListItem: Component<ItemWithID> = ({
   images,
   price,
   originalPrice,
+  dateToPick,
 }) => {
   return (
     <>
@@ -20,8 +22,8 @@ export const ListItem: Component<ItemWithID> = ({
         ) : null}
         <div class="flex gap-2 flex-1">
           <div class="flex flex-col gap-2 flex-1 justify-between">
-            <div class="flex justify-between">
-              <h2 class="text-lg">{name}</h2>
+            <div class="flex justify-between gap-4">
+              <h2 class="text-lg font-bold">{name}</h2>
               <div>
                 {isNotNil(url) ? (
                   <a
@@ -35,6 +37,11 @@ export const ListItem: Component<ItemWithID> = ({
                 ) : null}
               </div>
             </div>
+            {isNotNil(dateToPick) ? (
+              <div class="flex justify-between">
+                <h3>Retirada {showDate(dateToPick)}</h3>
+              </div>
+            ) : null}
             <div class="flex justify-between">
               <h3 class="text-slate-500">
                 {isNotNil(originalPrice) ? (

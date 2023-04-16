@@ -1,19 +1,11 @@
 import { Button, Dialog, Image } from "@kobalte/core";
-import { isNil } from "ramda";
 import {
   RiMediaImage2Line,
   RiSystemArrowLeftSFill,
   RiSystemArrowRightSFill,
   RiSystemCloseLine,
 } from "solid-icons/ri";
-import {
-  Accessor,
-  Component,
-  For,
-  createEffect,
-  createMemo,
-  onMount,
-} from "solid-js";
+import { Accessor, Component, For, createEffect, createMemo } from "solid-js";
 import { createSlider } from "solid-slider";
 
 type DialogImageSliderProps = {
@@ -39,7 +31,6 @@ export const DialogImageSlider: Component<DialogImageSliderProps> = ({
 
   const isFirst = createMemo(() => current() === 0);
   const isLast = createMemo(() => {
-    console.log(name, current() === images.length - 1);
     return current() === images.length - 1;
   });
 

@@ -84,6 +84,7 @@ export const items = [
   {
     name: "Cama box casal (inclui colchão)",
     price: 0,
+    dateToPick: "01/09/2023",
   },
   {
     name: "Balança bioimpedância Xiaomi",
@@ -161,6 +162,7 @@ export const items = [
     name: "Ralador Fatiador Multiuso 3 Em 1 Verduras Legumes Queijo Frutas - Vinwer",
     url: "https://www.amazon.com.br/gp/product/B0BFG6CQV7",
     originalPrice: 77.87,
+    dateToPick: "15/04/2023",
   },
   {
     name: "Jogo 3 Assadeiras Vermelha Alumínio Antiaderente Tramontina",
@@ -171,16 +173,19 @@ export const items = [
     name: "Esfregão Mop Inclinável Balde 7 Litros C/ Centrífuga Begônia",
     url: "https://produto.mercadolivre.com.br/MLB-1440646037-esfrego-mop-inclinavel-balde-7-litros-c-centrifuga-begnia-_JM",
     originalPrice: 147.9,
+    dateToPick: "15/04/2023",
   },
   {
     name: "Porta Shampoo Canto Triplo Com Fundo Plástico",
     url: "https://produto.mercadolivre.com.br/MLB-1021402559-porta-shampoo-canto-triplo-com-fundo-plastico-promoco-_JM",
     originalPrice: 109.99,
+    dateToPick: "15/04/2023",
   },
   {
     name: "Tapete Bar Mat 30x45cm Bar Mat Porta Copo Escorredor- Pvc",
     url: "https://produto.mercadolivre.com.br/MLB-1262485923-tapete-bar-mat-30x45cm-bar-mat-porta-copo-escorredor-pvc-_JM",
     originalPrice: 64.99,
+    dateToPick: "15/04/2023",
   },
   {
     name: "Pedra Afiar Amolar Dupla Face Tramontina Granulação 400 1000",

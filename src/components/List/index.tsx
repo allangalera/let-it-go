@@ -91,7 +91,7 @@ export const List: Component<ListProps> = ({ items }) => {
     <div class="flex flex-col gap-4 w-full max-w-screen-sm">
       <div class="sticky top-0 p-4 flex justify-between items-center flex-col gap-4 sm:flex-row bg-slate-200 dark:bg-slate-950 z-10">
         <label class="flex gap-4">
-          Search:
+          Buscar:
           <input
             class="bg-transparent border border-slate-400 dark:border-slate-800 rounded p-1 outline-none"
             value={searchInputValue()}
