@@ -44,7 +44,6 @@ export const DialogImageSlider: Component<DialogImageSliderProps> = ({
 
   return (
     <Dialog.Root isOpen={isOpen()} onOpenChange={onOpenChange}>
-      <Dialog.Trigger class="dialog__trigger">Open</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay class="fixed w-[100vw] h-[100svh] top-0 left-0 bg-slate-950/20 z-20 p-4" />
         <div class="text-black dark:text-white fixed w-[100vw] h-[100svh] top-0 left-0 flex justify-center items-center z-20 p-4">
