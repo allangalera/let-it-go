@@ -125,8 +125,9 @@ export const items = [
     url: "https://www.madeiramadeira.com.br/mesa-de-cabeceira-compacta-retro-decore-mesinha-canto-quarto-gaveta-nicho-preto-rpm-moveis-2581082.html?id=2581082",
   },
   {
-    name: "escorredor",
-    url: "https://produto.mercadolivre.com.br/MLB-1570696571-escorredor-louca-30-pratos-chef-triplo-com-bandeja-p-agua-_JM?quantity=1&variation_id=58675943642",
+    name: "Escorredor Louca 30 Pratos Chef Triplo Com Bandeja P/ Agua",
+    url: "https://produto.mercadolivre.com.br/MLB-1570696571-escorredor-louca-30-pratos-chef-triplo-com-bandeja-p-agua-_JM",
+    originalPrice: 248.9,
   },
   {
     name: "rack sala",
@@ -165,6 +166,31 @@ export const items = [
     name: "Jogo 3 Assadeiras Vermelha Alumínio Antiaderente Tramontina",
     url: "https://www.amazon.com.br/gp/product/B076JM227L",
     originalPrice: 189.13,
+  },
+  {
+    name: "Esfregão Mop Inclinável Balde 7 Litros C/ Centrífuga Begônia",
+    url: "https://produto.mercadolivre.com.br/MLB-1440646037-esfrego-mop-inclinavel-balde-7-litros-c-centrifuga-begnia-_JM",
+    originalPrice: 147.9,
+  },
+  {
+    name: "Porta Shampoo Canto Triplo Com Fundo Plástico",
+    url: "https://produto.mercadolivre.com.br/MLB-1021402559-porta-shampoo-canto-triplo-com-fundo-plastico-promoco-_JM",
+    originalPrice: 109.99,
+  },
+  {
+    name: "Tapete Bar Mat 30x45cm Bar Mat Porta Copo Escorredor- Pvc",
+    url: "https://produto.mercadolivre.com.br/MLB-1262485923-tapete-bar-mat-30x45cm-bar-mat-porta-copo-escorredor-pvc-_JM",
+    originalPrice: 64.99,
+  },
+  {
+    name: "Pedra Afiar Amolar Dupla Face Tramontina Granulação 400 1000",
+    url: "https://produto.mercadolivre.com.br/MLB-1391599185-pedra-afiar-amolar-dupla-face-tramontina-granulaco-400-1000-_JM",
+    originalPrice: 183.68,
+  },
+  {
+    name: "Roteador Wireless TP-Link Dual Band AC 1350 Archer C60",
+    url: "https://www.kabum.com.br/produto/85644/roteador-wireless-tp-link-dual-band-ac-1350-archer-c60",
+    originalPrice: 312.82,
   },
 ] satisfies Item[];
 
