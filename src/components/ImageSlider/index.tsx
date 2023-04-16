@@ -1,12 +1,11 @@
 import { Component, For, createMemo, createSignal } from "solid-js";
 import { createSlider } from "solid-slider";
-import { Image, Button, Dialog } from "@kobalte/core";
+import { Image, Button } from "@kobalte/core";
 import {
   RiMediaFullscreenLine,
   RiMediaImage2Line,
   RiSystemArrowLeftSFill,
   RiSystemArrowRightSFill,
-  RiSystemCloseLine,
 } from "solid-icons/ri";
 import { isNil } from "ramda";
 import { DialogImageSlider } from "~/components/DialogImageSlider";
