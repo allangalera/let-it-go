@@ -10,6 +10,7 @@ export const ListItem: Component<ItemWithID> = ({
   url,
   images,
   price,
+  originalPrice,
 }) => {
   return (
     <>
@@ -19,27 +20,42 @@ export const ListItem: Component<ItemWithID> = ({
         ) : null}
         <div class="flex gap-2 flex-1">
           <div class="flex flex-col gap-2 flex-1 justify-between">
-            <h2 class="text-lg">{name}</h2>
-            <h3>
-              {isNotNil(price)
-                ? new Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: "BRL",
-                  }).format(price)
-                : "valor ainda não definido"}
-            </h3>
-          </div>
-          <div>
-            {isNotNil(url) ? (
-              <a
-                target="_blank"
-                rel="noreferrer nofollow"
-                href={url}
-                class=" text-2xl"
-              >
-                <RiSystemExternalLinkLine />
-              </a>
-            ) : null}
+            <div class="flex justify-between">
+              <h2 class="text-lg">{name}</h2>
+              <div>
+                {isNotNil(url) ? (
+                  <a
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                    href={url}
+                    class=" text-2xl"
+                  >
+                    <RiSystemExternalLinkLine />
+                  </a>
+                ) : null}
+              </div>
+            </div>
+            <div class="flex justify-between">
+              <h3 class="text-slate-500">
+                {isNotNil(originalPrice) ? (
+                  <>
+                    Valor pago:{" "}
+                    {new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(originalPrice)}
+                  </>
+                ) : null}
+              </h3>
+              <h3>
+                {isNotNil(price)
+                  ? new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(price)
+                  : "valor ainda não definido"}
+              </h3>
+            </div>
           </div>
         </div>
       </div>

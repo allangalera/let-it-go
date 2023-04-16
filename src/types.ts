@@ -3,6 +3,7 @@ export type Item = {
   url?: string;
   images?: string[];
   price?: number;
+  originalPrice?: number;
 };
 
 export type ID = {

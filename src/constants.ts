@@ -1,4 +1,5 @@
 import type { Item } from "~/types";
+
 function guidGenerator() {
   return Math.random()
     .toString(36)
@@ -30,6 +31,7 @@ export const items = [
   {
     name: "Panela de pressão elétrica Electrolux",
     url: "https://www.amazon.com.br/gp/product/B076HYKFL7",
+    originalPrice: 479,
     price: 400,
   },
   {
@@ -67,6 +69,7 @@ export const items = [
   {
     name: "Televisão (LG 55 polegadas)",
     url: "https://www.amazon.com.br/gp/product/B07WJYCSN2",
+    originalPrice: 2321.89,
     price: 2000,
   },
   {
@@ -85,6 +88,7 @@ export const items = [
   {
     name: "Balança bioimpedância Xiaomi",
     url: "https://www.amazon.com.br/gp/product/B07VD9F419",
+    originalPrice: 269.95,
     price: 100,
   },
   {
@@ -93,6 +97,7 @@ export const items = [
   {
     name: "Secador de cabelo (preto)",
     url: "https://www.amazon.com.br/dp/B097HYQPJ1",
+    originalPrice: 299.9,
   },
   {
     name: "Grill Oister (sanduicheira)",
@@ -110,6 +115,7 @@ export const items = [
   {
     name: "Filtro de água Electrolux preto",
     url: "https://www.amazon.com.br/gp/product/B08X66RQ48",
+    originalPrice: 599.99,
   },
   {
     name: "Monitor Dell 21 polegadas",
@@ -129,10 +135,36 @@ export const items = [
   {
     name: "moedor café",
     url: "https://www.amazon.com.br/gp/product/B076HZQQ9X",
+    originalPrice: 119.9,
   },
   {
     name: "Apoio de headphone e controle",
     images: ["/images/20230414_215608.jpg", "/images/20230415_174158.jpg"],
+  },
+  {
+    name: "Kit 6 Potes Condimentos Vidro Hermético Tampa Bambu Casa Cozinha 110ML",
+    url: "https://www.amazon.com.br/gp/product/B0BLZN72SN",
+    originalPrice: 114.79,
+  },
+  {
+    name: "Lipper International 8302 Toca-discos de cozinha de 25,4 cm em madeira de bambu",
+    url: "https://www.amazon.com.br/gp/product/B001D33RWQ",
+    originalPrice: 151.8,
+  },
+  {
+    name: "Panquequeira Tramontina Profissional Antiaderente, 22cm, Aluminio",
+    url: "https://www.amazon.com.br/gp/product/B076MK87Y1",
+    originalPrice: 88.9,
+  },
+  {
+    name: "Ralador Fatiador Multiuso 3 Em 1 Verduras Legumes Queijo Frutas - Vinwer",
+    url: "https://www.amazon.com.br/gp/product/B0BFG6CQV7",
+    originalPrice: 77.87,
+  },
+  {
+    name: "Jogo 3 Assadeiras Vermelha Alumínio Antiaderente Tramontina",
+    url: "https://www.amazon.com.br/gp/product/B076JM227L",
+    originalPrice: 189.13,
   },
 ] satisfies Item[];
 
