@@ -1,10 +1,12 @@
 import { Item } from "~/types";
 import { z } from "zod";
 
-const envVar = z.object({
+export const EnvVars = z.object({
   WEBINY_API_URL: z.string(),
   WEBINY_API_KEY: z.string(),
 });
+
+export type EnvVars = z.infer<typeof EnvVars>;
 
 const document = `
   {
@@ -30,18 +32,18 @@ type Data = {
   };
 };
 
-const ENV_VAR = envVar.parse(process.env);
+type GetItemsParams = {
+  env: EnvVars;
+};
 
-const { WEBINY_API_URL, WEBINY_API_KEY } = ENV_VAR;
-
-export const getItems = async () => {
-  const response = await fetch(WEBINY_API_URL, {
+export const getItems = async ({ env }: GetItemsParams) => {
+  const response = await fetch(env.WEBINY_API_URL, {
     method: "POST",
     body: JSON.stringify({
       query: document,
     }),
     headers: {
-      Authorization: `Bearer ${WEBINY_API_KEY}`,
+      Authorization: `Bearer ${env.WEBINY_API_KEY}`,
       Accept: "application/json",
       "Content-type": "application/json",
     },
@@ -50,16 +52,4 @@ export const getItems = async () => {
   const data = await response.json();
 
   return data as Data;
-  //   const response = await got
-  //     .post(WEBINY_API_URL, {
-  //       json: {
-  //         query: document,
-  //       },
-  //       headers: {
-  //         Authorization: `Bearer ${WEBINY_API_KEY}`,
-  //       },
-  //     })
-  //     .json();
-
-  //   return response as Data;
 };

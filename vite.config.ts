@@ -7,6 +7,7 @@ export default defineConfig({
     solid({
       adapter: cloudflare({
         compatibilityFlags: ["streams_enable_constructors"],
+        envPath: ".env",
       }),
     }),
   ],

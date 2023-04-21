@@ -1,12 +1,13 @@
 import { List } from "~/components/List";
 import { useRouteData } from "solid-start";
-import { getItems } from "~/get-items";
+import { EnvVars, getItems } from "~/get-items";
 import { Show } from "solid-js";
 import { createServerData$ } from "solid-start/server";
 
 export function routeData() {
-  return createServerData$(() => {
-    return getItems();
+  return createServerData$((_, { env }) => {
+    const myEnv = env as EnvVars;
+    return getItems({ env: myEnv });
   });
 }
 
