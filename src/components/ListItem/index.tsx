@@ -35,7 +35,7 @@ export const ListItem: Component<Item> = (props) => {
               </div>
             ) : null}
             <div class="flex justify-between">
-              <h3 class="text-slate-500">
+              <h3 class="text-slate-600 dark:text-slate-300">
                 {isNotNil(props.originalPrice) ? (
                   <>
                     Valor pago:{" "}
