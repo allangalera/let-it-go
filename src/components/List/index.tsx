@@ -34,7 +34,7 @@ type ListProps = {
   items: Item[];
 };
 
-export const List: Component<ListProps> = ({ items }) => {
+export const List: Component<ListProps> = (props) => {
   const [searchInputValue, setSearchInputValue] = createSignal("");
   const [sortStyle, setSortStyle] = createSignal<SortStyles>(
     SORT_STYLES.ByName
@@ -43,11 +43,11 @@ export const List: Component<ListProps> = ({ items }) => {
     SORT_DIRECTION.Ascendend
   );
   const [sortedItems, setSortedItems] = createSignal(
-    naturalSort(items).asc((i) => i.name)
+    naturalSort(props.items).asc((i) => i.name)
   );
 
   createEffect(() => {
-    const searchedItems = matchSorter(items, searchInputValue(), {
+    const searchedItems = matchSorter(props.items, searchInputValue(), {
       keys: ["name", "price"],
     });
     if (sortStyle() === SORT_STYLES.ByName) {
