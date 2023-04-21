@@ -1,12 +1,12 @@
-import { Button, Dialog, Image } from "@kobalte/core";
+import { Button, Dialog } from "@kobalte/core";
 import {
-  RiMediaImage2Line,
   RiSystemArrowLeftSFill,
   RiSystemArrowRightSFill,
   RiSystemCloseLine,
 } from "solid-icons/ri";
 import { Accessor, Component, For, createEffect, createMemo } from "solid-js";
 import { createSlider } from "solid-slider";
+import { Image } from "~/components/Image";
 
 type DialogImageSliderProps = {
   isOpen: Accessor<boolean>;
@@ -16,26 +16,20 @@ type DialogImageSliderProps = {
   name: string;
 };
 
-export const DialogImageSlider: Component<DialogImageSliderProps> = ({
-  isOpen,
-  onOpenChange,
-  id,
-  name,
-  images,
-}) => {
+export const DialogImageSlider: Component<DialogImageSliderProps> = (props) => {
   const [slider, { current, next, prev, moveTo }] = createSlider();
 
   createEffect(() => {
-    if (isOpen()) moveTo(0);
+    if (props.isOpen()) moveTo(0);
   });
 
   const isFirst = createMemo(() => current() === 0);
   const isLast = createMemo(() => {
-    return current() === images.length - 1;
+    return current() === props.images.length - 1;
   });
 
   return (
-    <Dialog.Root isOpen={isOpen()} onOpenChange={onOpenChange}>
+    <Dialog.Root isOpen={props.isOpen()} onOpenChange={props.onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay class="fixed w-[100vw] h-[100svh] top-0 left-0 bg-slate-950/20 z-20" />
         <div class="text-black dark:text-white fixed w-[100vw] h-[100svh] top-0 left-0 flex justify-center items-center z-20 p-1">
@@ -50,22 +44,13 @@ export const DialogImageSlider: Component<DialogImageSliderProps> = ({
                 use:slider
                 class="flex relative overflow-hidden items-center rounded h-full w-full ]"
               >
-                <For each={images}>
+                <For each={props.images}>
                   {(image, i) => (
                     <div
-                      id={`${id}-${i()}`}
+                      id={`${props.id}-${i()}`}
                       class="shrink-0 basis-full h-full flex justify-center"
                     >
-                      <Image.Root class="max-h-full  flex justify-center">
-                        <Image.Img
-                          class="max-h-full object-contain"
-                          src={image}
-                          alt={name}
-                        />
-                        <Image.Fallback>
-                          <RiMediaImage2Line />
-                        </Image.Fallback>
-                      </Image.Root>
+                      <Image src={image} alt={props.name} />
                     </div>
                   )}
                 </For>

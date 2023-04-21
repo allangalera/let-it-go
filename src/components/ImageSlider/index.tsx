@@ -1,6 +1,6 @@
 import { Component, For, createMemo, createSignal } from "solid-js";
 import { createSlider } from "solid-slider";
-import { Image, Button } from "@kobalte/core";
+import { Button } from "@kobalte/core";
 import {
   RiMediaFullscreenLine,
   RiMediaImage2Line,
@@ -9,6 +9,7 @@ import {
 } from "solid-icons/ri";
 import { isNil } from "ramda";
 import { DialogImageSlider } from "~/components/DialogImageSlider";
+import { Image } from "~/components/Image";
 
 type ImageSliderProps = {
   id: string;
@@ -16,18 +17,14 @@ type ImageSliderProps = {
   name: string;
 };
 
-export const ImageSlider: Component<ImageSliderProps> = ({
-  id,
-  images,
-  name,
-}) => {
+export const ImageSlider: Component<ImageSliderProps> = (props) => {
   const [isDialogOpen, setIsDialogOpen] = createSignal(false);
   const [slider, { current, next, prev, moveTo }] = createSlider();
 
   const isFirst = createMemo(() => current() === 0);
   const isLast = createMemo(() => {
-    if (isNil(images)) return false;
-    return current() === images.length - 1;
+    if (isNil(props.images)) return false;
+    return current() === props.images.length - 1;
   });
 
   return (
@@ -35,34 +32,25 @@ export const ImageSlider: Component<ImageSliderProps> = ({
       <DialogImageSlider
         isOpen={isDialogOpen}
         onOpenChange={setIsDialogOpen}
-        id={id}
-        name={name}
-        images={images}
+        id={props.id}
+        name={props.name}
+        images={props.images}
       />
       <div class="rounded dark:bg-slate-800 w-full aspect-square relative">
         <div
           use:slider
           class="flex relative aspect-square overflow-hidden items-center rounded w-full h-full"
           style={{
-            "grid-auto-columns": `repeat(${images.length}, 100%)`,
+            "grid-auto-columns": `repeat(${props.images.length}, 100%)`,
           }}
         >
-          <For each={images}>
+          <For each={props.images}>
             {(image, i) => (
               <div
-                id={`${id}-${i()}`}
+                id={`${props.id}-${i()}`}
                 class="flex items-center justify-center max-h-full w-full h-full"
               >
-                <Image.Root class="max-h-full flex">
-                  <Image.Img
-                    class="max-h-full object-contain"
-                    src={image}
-                    alt={name}
-                  />
-                  <Image.Fallback>
-                    <RiMediaImage2Line />
-                  </Image.Fallback>
-                </Image.Root>
+                <Image src={image} alt={props.name} />
               </div>
             )}
           </For>
