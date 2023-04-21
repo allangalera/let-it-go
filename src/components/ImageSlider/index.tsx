@@ -3,7 +3,6 @@ import { createSlider } from "solid-slider";
 import { Button } from "@kobalte/core";
 import {
   RiMediaFullscreenLine,
-  RiMediaImage2Line,
   RiSystemArrowLeftSFill,
   RiSystemArrowRightSFill,
 } from "solid-icons/ri";
@@ -59,6 +58,8 @@ export const ImageSlider: Component<ImageSliderProps> = (props) => {
           <Button.Root
             class="absolute top-[50%] translate-y-[-50%] translate-x-1 left-0 p-1 bg-slate-900 rounded opacity-50"
             onClick={prev}
+            aria-label="Previous image"
+            title="Previous"
           >
             <RiSystemArrowLeftSFill class="text-4xl" />
           </Button.Root>
@@ -67,6 +68,8 @@ export const ImageSlider: Component<ImageSliderProps> = (props) => {
           <Button.Root
             class="absolute top-[50%] translate-y-[-50%] translate-x-[-4px] right-0 p-1 bg-slate-900 rounded opacity-50"
             onClick={next}
+            aria-label="Next image"
+            title="Next"
           >
             <RiSystemArrowRightSFill class="text-4xl" />
           </Button.Root>
@@ -74,6 +77,8 @@ export const ImageSlider: Component<ImageSliderProps> = (props) => {
         <Button.Root
           class="absolute bottom-0 right-0 p-1"
           onClick={() => setIsDialogOpen(true)}
+          aria-label="Maximize image slider"
+          title="Maximize"
         >
           <RiMediaFullscreenLine class="text-4xl" />
         </Button.Root>

@@ -16,7 +16,12 @@ export const Image: Component<ImageProps> = (props) => {
           srcset={`${props.src}?width=${size}`}
         />
       ))}
-      <img class="max-h-full object-contain" src={props.src} alt={props.alt} />
+      <img
+        loading="lazy"
+        class="max-h-full object-contain"
+        src={props.src}
+        alt={props.alt}
+      />
     </picture>
   );
 };
