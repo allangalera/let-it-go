@@ -1,16 +1,13 @@
-import { gql, GraphQLClient } from "graphql-request";
 import { Item } from "~/types";
+import { z } from "zod";
+import got from "got";
 
-const graphQLClient = new GraphQLClient(
-  "https://dl01g55kyi397.cloudfront.net/cms/read/en-US",
-  {
-    headers: {
-      authorization: `Bearer ${process.env.WEBINY_API_KEY}`,
-    },
-  }
-);
+const envVar = z.object({
+  WEBINY_API_URL: z.string(),
+  WEBINY_API_KEY: z.string(),
+});
 
-const document = gql`
+const document = `
   {
     listItems(limit: 100) {
       data {
@@ -27,11 +24,28 @@ const document = gql`
 `;
 
 type Data = {
-  listItems: {
-    data: Item[];
+  data: {
+    listItems: {
+      data: Item[];
+    };
   };
 };
 
-export const getItems = () => {
-  return graphQLClient.request<Data>(document);
+const ENV_VAR = envVar.parse(process.env);
+
+const { WEBINY_API_URL, WEBINY_API_KEY } = ENV_VAR;
+
+export const getItems = async () => {
+  const response = await got
+    .post(WEBINY_API_URL, {
+      json: {
+        query: document,
+      },
+      headers: {
+        Authorization: `Bearer ${WEBINY_API_KEY}`,
+      },
+    })
+    .json();
+
+  return response as Data;
 };

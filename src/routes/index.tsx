@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main class="bg-slate-200 dark:bg-slate-950 flex min-h-screen flex-col items-center p-4 text-black dark:text-white">
       <Show when={items()} fallback={<p>loading . . .</p>}>
-        {(items) => <List items={items().listItems.data} />}
+        {(items) => <List items={items().data.listItems.data} />}
       </Show>
     </main>
   );
