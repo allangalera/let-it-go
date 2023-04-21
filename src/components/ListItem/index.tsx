@@ -23,6 +23,7 @@ export const ListItem: Component<Item> = (props) => {
                     rel="noreferrer nofollow"
                     href={props.url}
                     class=" text-2xl"
+                    aria-label={`Veja mais detalhes ${props.name} em um website externo`}
                   >
                     <RiSystemExternalLinkLine />
                   </a>
