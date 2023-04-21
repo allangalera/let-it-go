@@ -3,5 +3,11 @@ import { defineConfig } from "vite";
 import cloudflare from "solid-start-cloudflare-pages";
 
 export default defineConfig({
-  plugins: [solid()],
+  plugins: [
+    solid({
+      adapter: cloudflare({
+        compatibilityFlags: ["streams_enable_constructors"],
+      }),
+    }),
+  ],
 });
