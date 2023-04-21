@@ -1,11 +1,11 @@
 import { Component } from "solid-js";
-import type { ItemWithID } from "~/types";
+import type { Item } from "~/types";
 import { RiSystemExternalLinkLine } from "solid-icons/ri";
 import { isEmpty, isNotNil } from "ramda";
 import { ImageSlider } from "~/components/ImageSlider";
 import { showDate } from "~/utils";
 
-export const ListItem: Component<ItemWithID> = ({
+export const ListItem: Component<Item> = ({
   id,
   name,
   url,

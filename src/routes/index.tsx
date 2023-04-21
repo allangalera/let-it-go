@@ -1,10 +1,23 @@
 import { List } from "~/components/List";
-import { ItemsWithId } from "~/constants";
+import { useRouteData } from "solid-start";
+import { getItems } from "~/get-items";
+import { Show } from "solid-js";
+import { createServerData$ } from "solid-start/server";
+
+export function routeData() {
+  return createServerData$(() => {
+    return getItems();
+  });
+}
 
 export default function Home() {
+  const items = useRouteData<typeof routeData>();
+
   return (
     <main class="bg-slate-200 dark:bg-slate-950 flex min-h-screen flex-col items-center p-4 text-black dark:text-white">
-      <List items={ItemsWithId} />
+      <Show when={items()} fallback={<p>loading . . .</p>}>
+        {(items) => <List items={items().listItems.data} />}
+      </Show>
     </main>
   );
 }
