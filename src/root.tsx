@@ -24,6 +24,12 @@ export default function Root() {
           name="description"
           content="Estou me mudando do pais. Confira os items que estou me desfazendo."
         />
+        <script
+          async
+          defer
+          data-website-id="0b418e8d-7506-4116-b607-3a002b5a9be4"
+          src="https://umami-cockroachdb.vercel.app/umami.js"
+        ></script>
       </Head>
       <Body>
         <Suspense>
