@@ -23,3 +23,6 @@ gitignore
 .DS_Store
 Thumbs.db
 .env
+# sst
+.sst/
+cdk.context.json
