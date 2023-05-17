@@ -32,18 +32,15 @@ type Data = {
   };
 };
 
-type GetItemsParams = {
-  env: EnvVars;
-};
-
-export const getItems = async ({ env }: GetItemsParams) => {
-  const response = await fetch(env.WEBINY_API_URL, {
+export const getItems = async () => {
+  const envVars = EnvVars.parse(process.env);
+  const response = await fetch(envVars.WEBINY_API_URL, {
     method: "POST",
     body: JSON.stringify({
       query: document,
     }),
     headers: {
-      Authorization: `Bearer ${env.WEBINY_API_KEY}`,
+      Authorization: `Bearer ${envVars.WEBINY_API_KEY}`,
       Accept: "application/json",
       "Content-type": "application/json",
     },
